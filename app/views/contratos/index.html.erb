@@ -1,0 +1,40 @@
+<%- model_class = Contrato -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:codigo) %></th>
+      <th><%= model_class.human_attribute_name(:nombre) %></th>
+      <th><%= model_class.human_attribute_name(:activo) %></th>
+      <th><%= model_class.human_attribute_name(:descripcion) %></th>
+      <th><%= model_class.human_attribute_name(:carpeta) %></th>
+      <th><%=t '.Acciones', :default => t("helpers.Acciones") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contratos.each do |contrato| %>
+      <tr>
+        <td><%= contrato.codigo %></td>
+        <td><%= link_to contrato.nombre, edit_contrato_path(contrato) %></td>
+        <td><%= contrato.activo %></td>
+        <td><%= contrato.descripcion %></td>
+        <td><%= contrato.carpeta %></td>
+        <td>
+          <%= link_to t('.Editar', :default => t("helpers.links.Editar")),
+                      edit_contrato_path(contrato), :class => 'btn btn-mini' %>
+          <%= link_to t('.Borrar', :default => t("helpers.links.Borrar")),
+                      contrato_path(contrato),
+                      :method => :delete,
+                      :data => { :confirm => t('.Confirmar', :default => t("helpers.links.Confirmar", :default => 'Esta seguro?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.Nuevo', :default => t("helpers.links.Nuevo")),
+            new_contrato_path,
+            :class => 'btn btn-primary' %>

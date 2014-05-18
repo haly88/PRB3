@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  codigo: MyString
+  nombre: MyString
+  activo: false
+  descripcion: MyString
+  esInquilino: false
+  esPropietario: false
+  esGarante: false
+
+two:
+  codigo: MyString
+  nombre: MyString
+  activo: false
+  descripcion: MyString
+  esInquilino: false
+  esPropietario: false
+  esGarante: false

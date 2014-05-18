@@ -1,0 +1,50 @@
+<%- model_class = Persona -%>
+<h1> 
+	<%= link_to t('.Inquilinos', :default => t("helpers.links.Inquilinos")),
+                      inquilinos_path, :class => 'btn btn-mini' %>
+</h1>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:codigo) %></th>
+      <th><%= model_class.human_attribute_name(:nombre) %></th>
+      <th><%= model_class.human_attribute_name(:activo) %></th>
+      <th><%= model_class.human_attribute_name(:descripcion) %></th>
+      <th><%= model_class.human_attribute_name(:es_inquilino) %></th>
+      <th><%= model_class.human_attribute_name(:es_propietario) %></th>
+      <th><%= model_class.human_attribute_name(:es_garante) %></th>
+      <th><%= model_class.human_attribute_name(:es_otros) %></th>
+      <th><%=t '.Acciones', :default => t("helpers.Acciones") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @personas.each do |persona| %>
+      <tr>
+        <td><%= persona.codigo %></td>
+        <td><%= link_to persona.nombre, edit_persona_path(persona) %></td>
+        <td><%= persona.activo %></td>
+        <td><%= persona.descripcion %></td>
+        <td><%= persona.es_inquilino %></td>
+        <td><%= persona.es_propietario %></td>
+        <td><%= persona.es_garante %></td>
+        <td><%= persona.es_otros %></td>
+        <td>
+          <%= link_to t('.Editar', :default => t("helpers.links.Editar")),
+                      edit_persona_path(persona), :class => 'btn btn-mini' %>
+          <%= link_to t('.Borrar', :default => t("helpers.links.Borrar")),
+                      persona_path(persona),
+                      :method => :delete,
+                      :data => { :confirm => t('.Confirmar', :default => t("helpers.links.Confirmar", :default => 'Esta seguro?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.Nueva', :default => t("helpers.links.Nueva")),
+            new_persona_path,
+            :class => 'btn btn-primary' %>

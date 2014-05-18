@@ -1,0 +1,104 @@
+<%= form_for @persona, :html => { :class => 'form-horizontal' } do |f| %>
+
+<head>
+    <link href="select2.css" rel="stylesheet"/>
+    <script src="select2.js"></script>
+    <script>
+        $(document).ready(function() { $("#select_localidad").select2(); });
+    </script>
+</head>
+
+
+  <div class="control-group">
+    <%= f.label :codigo, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :codigo, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :nombre, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :nombre, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :activo, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :activo, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :descripcion, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :descripcion, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :es_inquilino, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :es_inquilino, :class => 'check_box'%>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :es_propietario, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :es_propietario, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :es_garante, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :es_garante, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :es_otros, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :es_otros, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :calle, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :calle, :class => 'text_field' %>
+  	</div>
+  </div>
+  <div class="control-group">
+    <%= f.label :piso, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :piso, :class => 'text_field' %>
+  	</div>
+  </div>
+  <div class="control-group">
+    <%= f.label :departamento, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :departamento, :class => 'text_field' %>
+  	</div>
+  </div>
+  <div class="control-group">
+    <%= f.label :localidad, :class => 'control-label' %>
+    <div class="controls">
+      <%= collection_select(:persona, :localidad_id, Localidad.all, :id, :nombre) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :tipo_documento, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :tipo_documento, options_for_select([['CUIT', 'CUIT'], ['CUIL', 'CUIL'], ['DNI', 'DNI']], f.object.tipo_documento) %>
+    </div>
+  </div>
+
+  <h3>
+    Example select2-rails
+  </h3>
+  <select id="2">
+      <option value="AL">Alabama</option>
+      <option value="WY">Wyoming</option>
+  </select>
+    
+  <div class="form-actions">
+    <%= f.submit 'Guardar', :class => 'btn btn-primary' %>
+    <%= link_to t('.Cancelar', :default => t("helpers.links.Cancelar")),
+                personas_path, :class => 'btn' %>
+  </div>
+<% end %>
