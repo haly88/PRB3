@@ -1,5 +1,7 @@
 class LocalidadsController < ApplicationController
   before_action :set_localidad, only: [:show, :edit, :update, :destroy]
+  before_action :set_titulo
+  
 
   # GET /localidads
   # GET /localidads.json
@@ -65,6 +67,11 @@ class LocalidadsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_localidad
       @localidad = Localidad.find(params[:id])
+      @titulo = "Localidades"
+    end
+    
+    def set_titulo
+      @titulo = "Contratos"
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

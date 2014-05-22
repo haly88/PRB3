@@ -1,5 +1,7 @@
 class ContratosController < ApplicationController
   before_action :set_contrato, only: [:show, :edit, :update, :destroy]
+  before_action :set_titulo
+  
 
   # GET /contratos
   # GET /contratos.json
@@ -65,6 +67,10 @@ class ContratosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_contrato
       @contrato = Contrato.find(params[:id])
+    end
+    
+    def set_titulo
+      @titulo = "Contratos"
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
