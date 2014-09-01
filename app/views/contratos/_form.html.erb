@@ -47,12 +47,22 @@
       <%= f.date_select :fecha_prorroga_hasta, :class => 'text_field' %>
     </div>
   </div>
+
   <div class="control-group">
-    <%= f.label :monto, :class => 'control-label' %>
+    <%= f.label :Montos, :class => 'control-label' %>
     <div class="controls">
-      <%= f.number_field :monto, :class => 'text_field', :step => '0.01' %>
+      <% if @contrato_items %>
+        <div class="controls">
+          <%= render @contrato_items %>
+        <% if @contrato %>
+          <%= link_to '+', controller: :contrato_items, action: :new, id: @contrato, :class => 'btn' %>
+        <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
+
+   
 
   <div class="form-actions">
     <%= f.submit 'Guardar', :class => 'btn btn-primary' %>

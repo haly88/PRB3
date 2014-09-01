@@ -1,11 +1,12 @@
 class PersonasController < ApplicationController
   before_action :set_persona, only: [:show, :edit, :update, :destroy]
+  before_action :set_titulo
 
 
   # GET /personas
   # GET /personas.json
   def index
-    @personas = Persona.all
+    @personas = Persona.where(params[:tipo])
   end
 
   # GET /personas/1
@@ -27,14 +28,11 @@ class PersonasController < ApplicationController
   def create
     @persona = Persona.new(persona_params)
 
-    respond_to do |format|
-      if @persona.save
-        format.html { redirect_to edit_persona_path(@persona), notice: 'La Persona se creo exitosamente.' }
-        format.json { render action: 'edit', status: :created, location: @persona }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @persona.errors, status: :unprocessable_entity }
-      end
+    if @persona.save
+      redirect_to edit_persona_path(@persona), notice: 'La Persona se creo exitosamente.' 
+    else
+      flash.now[:notice] = @persona.errors.full_messages
+      render action: 'new'
     end
   end
 
@@ -66,6 +64,10 @@ class PersonasController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_persona
       @persona = Persona.find(params[:id])
+    end
+    
+    def set_titulo
+      @titulo = "Personas"
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

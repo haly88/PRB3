@@ -20,7 +20,13 @@
   <dd><%= @contrato.fecha_fin %></dd>
   <dt><strong><%= model_class.human_attribute_name(:fecha_prorroga_hasta) %>:</strong></dt>
   <dd><%= @contrato.fecha_prorroga_hasta %></dd>
+  <dt><strong>Montos:</strong></dt>
+  <dd><%= render @contrato_items %></dd> 
 </dl>
+
+
+
+
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),

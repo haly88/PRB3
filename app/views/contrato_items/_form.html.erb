@@ -1,0 +1,20 @@
+<%= form_for @contrato_item, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :fecha, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :fecha, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :monto, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :monto, :class => 'text_field', :step => '0.01' %>
+    </div>
+  </div>
+  
+  <div class="form-actions">
+    <%= f.submit 'Guardar', id: @contrato, :class => 'btn btn-primary' %>
+    <%= link_to t('.Cerrar', :default => t("helpers.links.Cerrar")),
+                edit_contrato_path(@contrato), :class => 'btn' %>
+  </div>
+<% end %>

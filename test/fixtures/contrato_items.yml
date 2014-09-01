@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha: 2014-07-31 20:22:28
+  monto: 9.99
+  contrato_id: 
+
+two:
+  fecha: 2014-07-31 20:22:28
+  monto: 9.99
+  contrato_id: 

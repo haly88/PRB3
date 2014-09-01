@@ -1,7 +1,15 @@
 <%- model_class = Persona -%>
 <h1> 
 	<%= link_to t('.Inquilinos', :default => t("helpers.links.Inquilinos")),
-                      inquilinos_path, :class => 'btn btn-mini' %>
+                      personas_path( tipo: :es_inquilino ), :class => 'btn btn-mini' %>
+  <%= link_to t('.Propietarios', :default => t("helpers.links.Propietarios")),
+                      personas_path( tipo: :es_propietario ), :class => 'btn btn-mini' %>
+  <%= link_to t('.Garantes', :default => t("helpers.links.Garantes")),
+                      personas_path( tipo: :es_garante ), :class => 'btn btn-mini' %>
+  <%= link_to t('.Otros', :default => t("helpers.links.Otros")),
+                      personas_path( tipo: :es_otros ), :class => 'btn btn-mini' %>
+  <%= link_to t('.Personas', :default => t("helpers.links.Personas")),
+                      personas_path, :class => 'btn btn-mini' %>
 </h1>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>

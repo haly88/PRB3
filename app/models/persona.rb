@@ -1,9 +1,20 @@
 class Persona < ActiveRecord::Base
   
-  validates_presence_of :codigo
-  validates_presence_of :nombre
+  validates :codigo, 	presence: true 
+  validates :nombre, 	presence: true 
   
   belongs_to :localidad
+
+  validate :tipo_de_persona
+
+  def tipo_de_persona
+  	 errors.add(:persona_id, "sin tipo") unless self.es_algo?
+  end
+
+  def es_algo?
+  	es_inquilino || es_propietario || es_garante || es_otros
+  end
+
  
   
 end

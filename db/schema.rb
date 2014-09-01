@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140516014644) do
+ActiveRecord::Schema.define(version: 20140731232228) do
+
+  create_table "contrato_items", force: true do |t|
+    t.datetime "fecha"
+    t.decimal  "monto",       precision: 10, scale: 0
+    t.integer  "contrato_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contrato_items", ["contrato_id"], name: "index_contrato_items_on_contrato_id", using: :btree
 
   create_table "contratos", force: true do |t|
     t.string   "codigo"

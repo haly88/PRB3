@@ -1,4 +1,6 @@
 GagCf::Application.routes.draw do  
+  resources :contrato_items
+
   resources :contratos
 
   resources :localidads

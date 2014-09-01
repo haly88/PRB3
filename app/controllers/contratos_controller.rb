@@ -67,6 +67,7 @@ class ContratosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_contrato
       @contrato = Contrato.find(params[:id])
+      @contrato_items = @contrato.contrato_items
     end
     
     def set_titulo
