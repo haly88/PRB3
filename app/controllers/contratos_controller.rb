@@ -17,6 +17,9 @@ class ContratosController < ApplicationController
   # GET /contratos/new
   def new
     @contrato = Contrato.new
+    1.times do
+      contrato_item = @contrato.contrato_items.build
+    end
   end
 
   # GET /contratos/1/edit
@@ -67,7 +70,6 @@ class ContratosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_contrato
       @contrato = Contrato.find(params[:id])
-      @contrato_items = @contrato.contrato_items
     end
     
     def set_titulo
@@ -76,6 +78,6 @@ class ContratosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contrato_params
-      params.require(:contrato).permit(:codigo, :nombre, :activo, :descripcion, :carpeta, :fecha_inicio, :fecha_fin, :fecha_prorroga_hasta, :monto)
+      params.require(:contrato).permit(:codigo, :nombre, :activo, :descripcion, :carpeta, :fecha_inicio, :fecha_fin, :fecha_prorroga_hasta, :monto, contrato_items_attributes: [:id, :monto, :_destroy])
     end
 end

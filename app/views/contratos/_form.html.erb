@@ -49,20 +49,13 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :Montos, :class => 'control-label' %>
-    <div class="controls">
-      <% if @contrato_items %>
-        <div class="controls">
-          <%= render @contrato_items %>
-        <% if @contrato %>
-          <%= link_to '+', controller: :contrato_items, action: :new, id: @contrato, :class => 'btn' %>
-        <% end %>
-        </div>
-      <% end %>
-    </div>
+    <%= f.fields_for :contrato_items do |builder| %>
+      <%= render "contrato_item_fields", :f => builder %>
+    <% end %>
+      <%= link_to_add_fields "+", f, :contrato_items %>
   </div>
 
-   
+
 
   <div class="form-actions">
     <%= f.submit 'Guardar', :class => 'btn btn-primary' %>
